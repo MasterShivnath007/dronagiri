@@ -1,0 +1,20 @@
+# build output
+/dronagiri
+/dist/
+
+# editors and OS
+.DS_Store
+.idea/
+.vscode/
+
+# local leftovers
+.trash/
+/cellar
+Logo_draft*.png
+Dronagiri.jpg
+
+# local build artefacts
+*.dmg
+*.zip
+Header_error.png
+opencode_tab.png
