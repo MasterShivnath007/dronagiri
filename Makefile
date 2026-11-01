@@ -1,7 +1,7 @@
 BINARY := dronagiri
 PREFIX ?= $(HOME)/.local
 
-.PHONY: build install uninstall test fmt vet check clean
+.PHONY: build install uninstall test fmt vet check logo clean
 
 build:
 	go build -o $(BINARY) .
@@ -24,6 +24,9 @@ vet:
 	go vet ./...
 
 check: fmt vet test
+
+logo:
+	go run ./cmd/logo-svg
 
 clean:
 	rm -f $(BINARY)

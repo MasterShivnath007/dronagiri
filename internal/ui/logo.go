@@ -81,6 +81,12 @@ func renderLogo(width int) string {
 	return strings.Join(out, "\n")
 }
 
+// LogoLines exposes the raw braille artwork so tooling can render it to an
+// image, where browser font fallback cannot distort the grid.
+func LogoLines(width int) []string {
+	return logoLines(width)
+}
+
 // Emblem exposes the artwork for the `logo` subcommand.
 func Emblem(width int) string {
 	return renderLogo(width)
