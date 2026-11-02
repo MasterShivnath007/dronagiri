@@ -132,13 +132,14 @@ and wondered what half of it was.
 
 ## 3. Hacker News — Show HN
 
-Post at <https://news.ycombinator.com/submit>. Use the **website**, not the repo.
-Do not ask for upvotes. Be present for the first two hours.
+Final copy is in [content/show-hn.md](content/show-hn.md). Post at
+<https://news.ycombinator.com/submit>. Use the **website**, not the repo or the
+dev.to article. Do not ask for upvotes. Be present for the first two hours.
 
 **Title:**
 
 ```
-Show HN: Dronagiri – a Cydia-style package manager for macOS
+Show HN: Dronagiri – a terminal package manager for macOS
 ```
 
 **URL:**
@@ -147,30 +148,8 @@ Show HN: Dronagiri – a Cydia-style package manager for macOS
 https://mastershivnath007.github.io/dronagiri/
 ```
 
-**First comment (post immediately after submitting):**
-
----
-
-Author here. I built this because `brew list` gives me 188 names and no context
-about which 145 are dependencies I never chose.
-
-Dronagiri reads Homebrew, npm, pipx, Cargo, RubyGems and `go install` through
-their documented commands, measures install paths with `du`, and asks `brew deps`
-for real runtime linkage instead of trusting the declared dependency list. The
-UI is Go + Bubble Tea. Removal is delegated to the package manager and requires
-two confirmations; there is no `--force`.
-
-Things it deliberately does not claim: `last used` is only as good as Spotlight
-metadata or timestamped shell history, so it says `never` rather than inventing
-a date. Popularity is Homebrew's public analytics, so non-brew packages show no
-stars.
-
-macOS 13+, MIT, no telemetry:
-https://github.com/MasterShivnath007/dronagiri
-
-Happy to answer questions about the dependency graph or the TUI.
-
----
+The first comment and anticipated questions are in
+[content/show-hn.md](content/show-hn.md).
 
 ## 4. Reddit
 
