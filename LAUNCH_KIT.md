@@ -24,7 +24,7 @@ Publish at <https://dev.to/new>. In the post settings, set the **canonical URL**
 to `https://mastershivnath007.github.io/dronagiri/` so Google credits the site
 instead of treating this as duplicate content.
 
-**Title:** I built a Cydia-style package manager for macOS because `brew list` hid 145 dependencies
+**Title:** I built a CLI package manager for macOS because `brew list` hid 145 dependencies
 
 **Tags:** `macos`, `opensource`, `go`, `showdev`
 

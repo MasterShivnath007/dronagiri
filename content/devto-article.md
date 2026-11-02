@@ -2,7 +2,7 @@
 DEV.TO PUBLISHING SETTINGS
 
 Title:
-I built a Cydia-style package manager for macOS because brew list hid 145 dependencies
+I built a CLI package manager for macOS because brew list hid 145 dependencies
 
 Tags:
 macos, opensource, go, showdev
