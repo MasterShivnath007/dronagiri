@@ -4,7 +4,13 @@ REDDIT — r/macapps
 Post type: text post. If the editor lets you attach an image, add
 docs/screenshot.png as well.
 
-Flair: choose the "App" / "Self-Promotion" flair that r/macapps requires.
+Flair:
+- On a normal weekday, use **Apps**.
+- **Developer Saturday** is only for Saturdays. Using it on another day gets
+  the post removed, even if the post itself is fine.
+- If r/macapps reserves all self-promotion for Saturday, wait and use
+  Developer Saturday then. Ask the moderators if you are unsure.
+
 Read the sidebar before posting. If the post is removed, read the mod message;
 do not repost the same text.
 
