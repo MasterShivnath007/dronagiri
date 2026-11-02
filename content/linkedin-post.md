@@ -10,7 +10,7 @@ The full build story is on dev.to: https://dev.to/master_shivnath_007/i-built-a-
 Do not paste this comment into the post.
 -->
 
-`brew list` on my Mac showed 188 packages.
+brew list on my Mac showed 188 packages.
 
 About 145 were dependencies I never chose. They arrived because something else
 needed them. I had no easy way to see which was which, how big they were, or what
@@ -28,14 +28,14 @@ one sortable table:
 → broken entries
 → two-step safe removal
 
-The part I use most is the Mine/Dependencies split. `brew list` treats the 40
+The part I use most is the Mine/Dependencies split. brew list treats the 40
 tools I chose and the 145 libraries they pulled in as one flat list. Dronagiri
 separates them.
 
 It is macOS 13+, MIT-licensed, and there is no telemetry.
 
 Install:
-`go install github.com/MasterShivnath007/dronagiri@latest`
+go install github.com/MasterShivnath007/dronagiri@latest
 
 Website and install guide:
 https://mastershivnath007.github.io/dronagiri/
