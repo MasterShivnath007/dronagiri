@@ -18,7 +18,7 @@ last-used evidence, dependencies and safe removal.
 [![Platform: macOS 13+](https://img.shields.io/badge/platform-macOS%2013%2B-black.svg)]()
 [![Go](https://img.shields.io/badge/go-1.24%2B-00ADD8.svg)]()
 
-[**Dronagiri website**](https://mastershivnath007.github.io/dronagiri/) · [**Install**](#install) · [**Keys**](#keys) · [**FAQ**](#faq) · [**Support**](#support-the-project)
+[**Dronagiri website**](https://mastershivnath007.github.io/dronagiri/) · [**Guides**](https://mastershivnath007.github.io/dronagiri/#guides) · [**Install**](#install) · [**Keys**](#keys) · [**FAQ**](#faq) · [**Support**](#support-the-project)
 
 <a href="https://github.com/MasterShivnath007/dronagiri/releases/latest">
   <img src="docs/screenshot.png" alt="Dronagiri package manager running in Terminal on macOS: a navy table of 201 packages with orange tabs, sizes, popularity stars, install dates and a detail panel" width="100%">

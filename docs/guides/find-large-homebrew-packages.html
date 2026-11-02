@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to see what Homebrew packages are taking up space on macOS — Dronagiri</title>
+<meta name="description" content="Find the Homebrew formulae and casks using the most disk space on macOS. Measure the Cellar and Caskroom, separate your tools from dependencies, and clean up safely.">
+<meta name="keywords" content="Homebrew disk space, brew list size, Homebrew cleanup, macOS disk space, brew autoremove, brew cleanup, Homebrew packages size">
+<meta name="author" content="MasterShivnath007">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0B1220">
+<link rel="canonical" href="https://mastershivnath007.github.io/dronagiri/guides/find-large-homebrew-packages.html">
+<link rel="icon" href="../mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to see what Homebrew packages are taking up space on macOS">
+<meta property="og:description" content="Measure the Cellar and Caskroom, separate your tools from dependencies, and clean up without breaking anything.">
+<meta property="og:url" content="https://mastershivnath007.github.io/dronagiri/guides/find-large-homebrew-packages.html">
+<meta property="og:image" content="https://mastershivnath007.github.io/dronagiri/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to see what Homebrew packages are taking up space on macOS",
+      "description": "Find the Homebrew formulae and casks using the most disk space, separate dependencies from your tools, and clean up safely.",
+      "datePublished": "2026-11-02",
+      "dateModified": "2026-11-02",
+      "author": {"@type": "Person", "name": "MasterShivnath007", "url": "https://github.com/MasterShivnath007"},
+      "publisher": {"@type": "Organization", "name": "Dronagiri package manager"},
+      "mainEntityOfPage": "https://mastershivnath007.github.io/dronagiri/guides/find-large-homebrew-packages.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Dronagiri", "item": "https://mastershivnath007.github.io/dronagiri/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://mastershivnath007.github.io/dronagiri/#guides"},
+        {"@type": "ListItem", "position": 3, "name": "Find large Homebrew packages"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../" aria-label="Dronagiri home">
+      <img src="../mark.svg" alt="" width="28" height="28">
+      Dronagiri <span>package manager</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="../#features">Features</a>
+      <a href="../#install">Install</a>
+      <a href="../#faq">FAQ</a>
+      <a class="nav-cta" href="https://github.com/MasterShivnath007/dronagiri" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <div class="breadcrumb"><a href="../">Dronagiri</a> / <a href="../#guides">Guides</a> / Homebrew disk space</div>
+
+  <h1>How to see what Homebrew packages are taking up space on macOS</h1>
+  <p class="lede"><code>brew list</code> tells you what is installed, not what it costs. The biggest package on your Mac is often a dependency you never chose. Here is how to measure the real footprint.</p>
+  <div class="meta">Updated 2 November 2026 · 6 minute read</div>
+
+  <h2>The quick answer</h2>
+  <p>Homebrew keeps formulae in a directory called the <strong>Cellar</strong>. Ask Homebrew where it is, then measure every package in it:</p>
+  <pre><code>du -sh "$(brew --cellar)"/* | sort -h | tail -20</code></pre>
+  <p>That prints the 20 largest formulae, smallest first. On Apple Silicon the Cellar is usually <code>/opt/homebrew/Cellar</code>; on Intel it is usually <code>/usr/local/Cellar</code>. Using <code>$(brew --cellar)</code> works on both and avoids hard-coding the path.</p>
+  <p>For the total:</p>
+  <pre><code>du -sh "$(brew --cellar)"</code></pre>
+  <p>These numbers are approximate. APFS clones and hard links can make a directory look larger than the space it actually occupies. For comparing packages, the ranking is still useful.</p>
+
+  <h2>Why <code>brew list</code> does not show size</h2>
+  <p><code>brew list</code> is an inventory, not a disk report. Homebrew's metadata knows the files a formula installed, but the operating system owns the actual blocks. Tools such as <code>du</code> ask the filesystem, which is why they see the real number.</p>
+  <p>You can also ask Homebrew for a package's details:</p>
+  <pre><code>brew info ffmpeg</code></pre>
+  <p>The output includes the install path, dependencies and whether the package was installed as a dependency. It is useful context, but the size still comes from the filesystem.</p>
+
+  <h2>Formulae, casks and the Caskroom</h2>
+  <p>Homebrew formulae are command-line tools and libraries. Casks are usually GUI applications, and they install into <code>/Applications</code> plus a copy in the Caskroom:</p>
+  <pre><code><span class="c"># list GUI apps installed with Homebrew</span>
+brew list --cask
+
+<span class="c"># measure the applications themselves</span>
+du -sh /Applications/*.app | sort -h | tail -20
+
+<span class="c"># the Caskroom holds metadata and sometimes staged files</span>
+du -sh "$(brew --prefix)/Caskroom"</code></pre>
+  <p>If a cask appears in both places, the application bundle is usually the larger copy. Some casks also install support files in <code>~/Library</code>, which <code>du</code> will not attribute to Homebrew.</p>
+
+  <h2>Separate your tools from dependencies</h2>
+  <p>This is the part that changes how you read the list. A formula such as <code>ffmpeg</code> may pull in dozens of libraries — <code>aom</code>, <code>libvpx</code>, <code>opus</code>, <code>x264</code>. They are real packages, but you never asked for them.</p>
+  <p>Homebrew can show the top-level packages you chose:</p>
+  <pre><code>brew leaves</code></pre>
+  <p>And the dependencies of a specific formula:</p>
+  <pre><code>brew deps --installed --tree ffmpeg</code></pre>
+  <p>If you remove a top-level tool, its dependencies may remain. List the ones nothing else needs:</p>
+  <pre><code>brew autoremove --dry-run</code></pre>
+  <p>Review the list before running <code>brew autoremove</code>. A library can be unused by Homebrew and still be used by a language runtime or a tool installed outside Homebrew.</p>
+
+  <h2>Clean up old versions and downloads</h2>
+  <p>A package you still use can have several old versions and cached bottles. This is usually the safest space to reclaim:</p>
+  <pre><code>brew cleanup --dry-run
+brew cleanup</code></pre>
+  <p><code>brew cleanup</code> removes old versions of installed formulae and stale downloads. It does not uninstall the current version of anything.</p>
+
+  <h2>What is safe to delete?</h2>
+  <ul>
+    <li><strong>Old versions and cached downloads:</strong> safe with <code>brew cleanup</code>.</li>
+    <li><strong>Unused dependencies:</strong> usually safe with <code>brew autoremove</code>, after reviewing the list.</li>
+    <li><strong>A top-level tool you no longer use:</strong> safe to uninstall, but check <code>brew uses --installed</code> first if it is a library.</li>
+    <li><strong>A package you do not recognise:</strong> look it up before deleting. It may be a dependency of something you use every day.</li>
+  </ul>
+  <p>A formula can be both a dependency and a tool you use directly. <code>brew leaves</code> is a guide, not a verdict.</p>
+
+  <div class="cta-box">
+    <h3>See the whole picture, not just Homebrew</h3>
+    <p>Dronagiri is a free, open-source macOS package manager that puts Homebrew formulae and casks, npm globals, pipx tools, Cargo crates, RubyGems and Go binaries in one table — with real sizes, install dates, last-used evidence and dependencies. Select a row, press <code>d</code>, and it asks twice before removing anything.</p>
+    <a class="btn btn-primary" href="../#install">Install Dronagiri</a>
+  </div>
+
+  <h2>FAQ</h2>
+  <h3>Why is the Cellar size larger than the space I reclaim?</h3>
+  <p>APFS clones and hard links can make multiple paths point at the same blocks. <code>du</code> may count them more than once. Treat the number as a ranking, not an exact accounting of freed space.</p>
+  <h3>Does <code>brew cleanup</code> uninstall packages?</h3>
+  <p>No. It removes old versions and cached downloads of packages you still have installed. Use <code>brew uninstall</code> to remove a package.</p>
+  <h3>How do I find the largest GUI app installed by Homebrew?</h3>
+  <p>Run <code>brew list --cask</code> for the names, then <code>du -sh /Applications/*.app | sort -h | tail -20</code> for the sizes. The application bundle is usually the main cost; the Caskroom copy is smaller.</p>
+  <h3>Is <code>brew autoremove</code> safe?</h3>
+  <p>It removes formulae that no installed formula depends on. That is usually safe, but review <code>brew autoremove --dry-run</code> first if you use libraries from outside Homebrew.</p>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>Dronagiri package manager · MIT · macOS only</div>
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="https://github.com/MasterShivnath007/dronagiri">GitHub</a>
+      <a href="../#install">Install</a>
+      <a href="../#faq">FAQ</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

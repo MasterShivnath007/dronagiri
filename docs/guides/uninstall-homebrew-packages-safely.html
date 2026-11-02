@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to uninstall Homebrew packages safely on macOS — Dronagiri</title>
+<meta name="description" content="A practical guide to uninstalling Homebrew formulae and casks on macOS without breaking dependencies: check dependents, remove orphans, handle casks, and know when to use --zap.">
+<meta name="keywords" content="uninstall Homebrew packages, brew uninstall, brew uninstall cask, remove Homebrew dependencies, brew autoremove, macOS package manager">
+<meta name="author" content="MasterShivnath007">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0B1220">
+<link rel="canonical" href="https://mastershivnath007.github.io/dronagiri/guides/uninstall-homebrew-packages-safely.html">
+<link rel="icon" href="../mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to uninstall Homebrew packages safely on macOS">
+<meta property="og:description" content="Check dependents, remove orphans, handle casks and know when to use --zap. A practical Homebrew uninstall guide.">
+<meta property="og:url" content="https://mastershivnath007.github.io/dronagiri/guides/uninstall-homebrew-packages-safely.html">
+<meta property="og:image" content="https://mastershivnath007.github.io/dronagiri/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to uninstall Homebrew packages safely on macOS",
+      "description": "A practical guide to uninstalling Homebrew formulae and casks without breaking dependencies.",
+      "datePublished": "2026-11-02",
+      "dateModified": "2026-11-02",
+      "author": {"@type": "Person", "name": "MasterShivnath007", "url": "https://github.com/MasterShivnath007"},
+      "publisher": {"@type": "Organization", "name": "Dronagiri package manager"},
+      "mainEntityOfPage": "https://mastershivnath007.github.io/dronagiri/guides/uninstall-homebrew-packages-safely.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Dronagiri", "item": "https://mastershivnath007.github.io/dronagiri/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://mastershivnath007.github.io/dronagiri/#guides"},
+        {"@type": "ListItem", "position": 3, "name": "Uninstall Homebrew packages safely"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../" aria-label="Dronagiri home">
+      <img src="../mark.svg" alt="" width="28" height="28">
+      Dronagiri <span>package manager</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="../#features">Features</a>
+      <a href="../#install">Install</a>
+      <a href="../#faq">FAQ</a>
+      <a class="nav-cta" href="https://github.com/MasterShivnath007/dronagiri" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <div class="breadcrumb"><a href="../">Dronagiri</a> / <a href="../#guides">Guides</a> / Uninstall Homebrew packages</div>
+
+  <h1>How to uninstall Homebrew packages safely on macOS</h1>
+  <p class="lede">Homebrew makes installing easy and uninstalling surprisingly subtle. Remove the wrong formula and something else stops working; remove a cask and its preferences can linger for years. Here is the careful path.</p>
+  <div class="meta">Updated 2 November 2026 · 7 minute read</div>
+
+  <h2>1. Find the exact package name</h2>
+  <p>Homebrew has two kinds of packages, and they use different commands:</p>
+  <pre><code><span class="c"># command-line tools and libraries</span>
+brew list --formula
+
+<span class="c"># GUI applications installed as casks</span>
+brew list --cask</code></pre>
+  <p>A name may appear in both lists, but they are different packages. If you are unsure which one you have, ask Homebrew:</p>
+  <pre><code>brew info --formula ffmpeg
+brew info --cask iterm2</code></pre>
+  <p>The first line of <code>brew info</code> tells you whether the package is installed, its version and its path. Use the exact name from that output; <code>openssl</code>, <code>openssl@3</code> and <code>openssl@4</code> are different formulae.</p>
+
+  <h2>2. Check what depends on it</h2>
+  <p>This is the step most guides skip. Before removing a formula, ask which installed packages require it:</p>
+  <pre><code>brew uses --installed ffmpeg</code></pre>
+  <p>If the output is empty, nothing else currently installed depends on it. If it names packages, removing <code>ffmpeg</code> will break them, and Homebrew may refuse the uninstall for good reason.</p>
+  <p>For the inverse view — everything a package pulls in — use:</p>
+  <pre><code>brew deps --installed --tree ffmpeg</code></pre>
+  <p>Casks do not have a formula dependency graph. For a cask, the main question is whether the application is still in use, and whether you want to remove its preferences and caches too.</p>
+
+  <h2>3. Uninstall the package</h2>
+  <p>For a formula:</p>
+  <pre><code>brew uninstall ffmpeg</code></pre>
+  <p>For a cask:</p>
+  <pre><code>brew uninstall --cask iterm2</code></pre>
+  <p>Homebrew will remove the package's files and leave your own documents alone. If the package is required by something else, read the warning rather than reaching for <code>--ignore-dependencies</code>. That flag is a way to create a broken installation, not a way to clean up.</p>
+
+  <div class="note"><strong>Do not use <code>--ignore-dependencies</code> to force a removal.</strong> Remove or replace the dependent package first, or keep the library. A broken dependency is harder to diagnose than a few megabytes of disk.</div>
+
+  <h2>4. Remove dependencies that are no longer needed</h2>
+  <p>When you uninstall a formula, its dependencies usually stay behind. Homebrew can list the ones that no installed formula needs:</p>
+  <pre><code>brew autoremove --dry-run</code></pre>
+  <p>Read the list before removing anything. A library can be unused by Homebrew and still be used by a language runtime, a Python virtual environment, or a tool installed outside Homebrew.</p>
+  <p>If the list looks right:</p>
+  <pre><code>brew autoremove</code></pre>
+  <p><code>brew leaves</code> is a useful second opinion: it lists formulae that are not dependencies of another formula. That is usually closer to "things I chose to install" than a raw <code>brew list</code>.</p>
+
+  <h2>5. Clean old versions and caches</h2>
+  <p>Uninstalling a package does not always remove old versions or downloaded bottles. This is safe to run regularly:</p>
+  <pre><code>brew cleanup --dry-run
+brew cleanup</code></pre>
+  <p><code>brew cleanup</code> removes old versions of installed formulae and stale downloads. It does not remove a package you still have installed.</p>
+
+  <h2>6. Decide about cask data</h2>
+  <p>By default, uninstalling a cask removes the application but may leave preferences, caches and support files in <code>~/Library</code>. If you want those gone too, Homebrew has a stronger option:</p>
+  <pre><code>brew uninstall --cask --zap iterm2</code></pre>
+  <p><strong>Read the <code>--zap</code> warning carefully.</strong> It can delete settings, sessions, plugins and local data. Quit the application first, and back up anything you would miss. For most people, the default uninstall plus a manual look at <code>~/Library/Application Support</code> and <code>~/Library/Preferences</code> is the safer choice.</p>
+
+  <h2>A safety checklist</h2>
+  <ol>
+    <li>Confirm the exact name and whether it is a formula or a cask.</li>
+    <li>Run <code>brew uses --installed &lt;name&gt;</code> before removing a formula.</li>
+    <li>Quit the app before uninstalling a cask.</li>
+    <li>Never use <code>--ignore-dependencies</code> to force a removal.</li>
+    <li>Use <code>brew autoremove --dry-run</code> before removing dependencies.</li>
+    <li>Treat <code>--zap</code> as a data-deleting operation, because it is one.</li>
+    <li>When in doubt, keep the package. Disk space is cheaper than a broken toolchain.</li>
+  </ol>
+
+  <div class="cta-box">
+    <h3>Want the dependencies and sizes in one view?</h3>
+    <p>Dronagiri is a free, open-source macOS package manager that lists Homebrew formulae and casks alongside npm, pipx, Cargo, RubyGems and Go packages. It separates your tools from dependencies, shows real disk size and last-used evidence, and asks twice before removing anything.</p>
+    <a class="btn btn-primary" href="../#install">Install Dronagiri</a>
+  </div>
+
+  <h2>FAQ</h2>
+  <h3>Does <code>brew uninstall</code> delete my files?</h3>
+  <p>It removes the package's own files. It does not delete your documents, projects or databases. Cask uninstalls may leave preferences and application data unless you use <code>--zap</code>.</p>
+  <h3>Why does Homebrew refuse to uninstall a formula?</h3>
+  <p>Something installed still depends on it. Run <code>brew uses --installed &lt;formula&gt;</code>, then remove or replace the dependent package first. Do not force it with <code>--ignore-dependencies</code>.</p>
+  <h3>How do I remove all unused Homebrew dependencies?</h3>
+  <p>Run <code>brew autoremove --dry-run</code>, review the list, then run <code>brew autoremove</code>. It only removes formulae that no installed formula needs, but review it anyway if you use tools outside Homebrew.</p>
+  <h3>What is the difference between <code>brew uninstall</code> and <code>brew cleanup</code>?</h3>
+  <p><code>brew uninstall</code> removes a package. <code>brew cleanup</code> removes old versions and cached downloads of packages you still have installed.</p>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>Dronagiri package manager · MIT · macOS only</div>
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="https://github.com/MasterShivnath007/dronagiri">GitHub</a>
+      <a href="../#install">Install</a>
+      <a href="../#faq">FAQ</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
