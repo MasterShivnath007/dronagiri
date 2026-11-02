@@ -64,6 +64,52 @@ quickly; stay available for the first two to three hours.
 - If it does not get traction, do not repost the same URL immediately. Wait a
   few weeks and try a different angle.
 
+## If HN blocks the submission
+
+HN sometimes returns:
+
+> Sorry, your account isn't able to submit this site.
+
+This is an anti-spam restriction, not a problem with the website. New or
+low-activity accounts are commonly blocked from Show HN, and some domains are
+restricted too. Do not create another account or ask people to upvote; that
+makes it worse.
+
+Try, in this order:
+
+1. Submit the GitHub repository URL once instead:
+   `https://github.com/MasterShivnath007/dronagiri`
+   If that works, the restriction was domain-specific. Mention the website in
+   the first comment.
+2. If the GitHub URL fails too, email the admins from the account's address:
+   `hn@ycombinator.com`. Keep it short:
+
+   ```
+   Subject: Unable to submit Show HN — account restriction
+
+   Hi HN,
+
+   My account <username> receives "Sorry, your account isn't able to submit
+   this site" when submitting a Show HN for my open-source macOS project:
+   https://mastershivnath007.github.io/dronagiri/
+
+   I am the author, and I have not submitted it before. Could you tell me
+   whether this is an account or domain restriction, and what I can do to
+   submit it?
+
+   Thanks,
+   <name>
+   ```
+
+3. Otherwise, use the account normally for a week or two — read, comment
+   thoughtfully on stories you actually care about — and try again later.
+4. Do not use a friend's account to submit and then coordinate upvotes. That is
+   vote manipulation. If an established user genuinely finds the project useful
+   and submits it on their own, that is different.
+
+HN is worth trying, but it should not block the rest of the launch. Do Reddit,
+X and Product Hunt while the account ages.
+
 ## Anticipated questions
 
 **“This is not a package manager.”**
