@@ -68,6 +68,33 @@ https://github.com/sponsors/MasterShivnath007
 `.github/FUNDING.yml` already points there, so GitHub will show the Sponsor
 button on the repository automatically. Send me the URL once it is live.
 
+### Why the Sponsor button can still be disabled
+
+`FUNDING.yml` is only a pointer. It does not create a donation page, a tier or a
+button. The button stays disabled until **all** of these are true:
+
+1. The GitHub Sponsors profile is approved and published.
+2. At least one **monthly tier** is published with a price.
+3. The profile is public.
+
+Create the tiers at <https://github.com/sponsors/accounts> → your account →
+**Tiers** (or **Sponsor tiers**) → **Add tier**:
+
+- Supporter — $3/month
+- Backer — $10/month
+- Company — $50/month
+
+Then enable **one-time amounts** ($5, $25, $100) and add the goal. After saving,
+open the public page in a private window:
+
+```
+https://github.com/sponsors/MasterShivnath007
+```
+
+If it shows “Select a tier” with no prices, the tiers are not published yet. The
+repository button will stay disabled until they are. Do not edit `FUNDING.yml`
+to fix this; the file is already correct.
+
 ## 2. Razorpay
 
 Use Razorpay for Indian supporters and for the paid audit. It handles UPI,
@@ -136,6 +163,22 @@ prices.
 Sponsorship and donation income is generally taxable in India. Keep a simple
 record of payouts and talk to a CA when the amounts become meaningful. This is
 not legal or tax advice.
+
+## The website support page
+
+`https://mastershivnath007.github.io/dronagiri/#support` is not a GitHub
+Sponsors page and not a payment page. It is the **Support** section of the
+project website. It contains:
+
+- a link to GitHub Sponsors
+- an optional paid **Mac environment audit — $49**
+- a link to the full support policy
+
+The audit is a service an individual can book, not a fee for using Dronagiri.
+The tool stays free and MIT-licensed. If you do not want to offer the audit,
+say so and I will remove the $49 card from `docs/index.html`, `README.md` and
+`SUPPORT.md`. If you want a different price or scope, tell me and I will change
+it everywhere.
 
 ## What to send me
 
