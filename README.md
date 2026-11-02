@@ -18,7 +18,7 @@ last-used evidence, dependencies and safe removal.
 [![Platform: macOS 13+](https://img.shields.io/badge/platform-macOS%2013%2B-black.svg)]()
 [![Go](https://img.shields.io/badge/go-1.24%2B-00ADD8.svg)]()
 
-[**Website**](https://mastershivnath007.github.io/dronagiri/) · [**Install**](#install) · [**Keys**](#keys) · [**FAQ**](#faq) · [**Support**](#support-the-project)
+[**Dronagiri website**](https://mastershivnath007.github.io/dronagiri/) · [**Install**](#install) · [**Keys**](#keys) · [**FAQ**](#faq) · [**Support**](#support-the-project)
 
 <a href="https://github.com/MasterShivnath007/dronagiri/releases/latest">
   <img src="docs/screenshot.png" alt="Dronagiri package manager running in Terminal on macOS: a navy table of 201 packages with orange tabs, sizes, popularity stars, install dates and a detail panel" width="100%">
@@ -45,6 +45,9 @@ Dronagiri does not replace your package managers. It reads their documented
 interfaces, delegates every removal and upgrade to them, and never adds
 `--force`. Think of it as a **`brew list` alternative** that also understands the
 rest of your machine.
+
+The install guide, screenshots and FAQ live at
+**[mastershivnath007.github.io/dronagiri](https://mastershivnath007.github.io/dronagiri/)**.
 
 ## The name
 
