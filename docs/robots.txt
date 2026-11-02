@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mastershivnath007.github.io/dronagiri/sitemap.xml

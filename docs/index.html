@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dronagiri — macOS package manager for Homebrew, npm, pipx &amp; more</title>
+<meta name="description" content="Dronagiri is a free, open-source macOS package manager for the terminal. See every Homebrew formula and cask, npm global, pipx tool, Cargo crate, RubyGem and Go binary in one list — with real disk size, install date, last-used evidence, dependencies and safe uninstall.">
+<meta name="keywords" content="macOS package manager, Homebrew uninstaller, brew list alternative, uninstall Homebrew packages, clean up Mac disk space, Cydia for macOS, terminal package manager, npm global uninstall, pipx uninstall, Cargo uninstall, RubyGems, go install, Dronagiri">
+<meta name="author" content="MasterShivnath007">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0B1220">
+<link rel="canonical" href="https://mastershivnath007.github.io/dronagiri/">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="mark.svg">
+<link rel="stylesheet" href="style.css">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dronagiri package manager">
+<meta property="og:title" content="Dronagiri — every tool on your Mac, lifted into one place">
+<meta property="og:description" content="A free, open-source macOS package manager for the terminal. Inspect and uninstall Homebrew, npm, pipx, Cargo, RubyGems and Go packages — with real sizes, dates, dependencies and two-step safety.">
+<meta property="og:url" content="https://mastershivnath007.github.io/dronagiri/">
+<meta property="og:image" content="https://mastershivnath007.github.io/dronagiri/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dronagiri package manager — every tool on your Mac, lifted into one place">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dronagiri — macOS package manager for the terminal">
+<meta name="twitter:description" content="One list for Homebrew, npm, pipx, Cargo, RubyGems and Go packages. Real sizes, install dates, last used, dependencies and safe removal.">
+<meta name="twitter:image" content="https://mastershivnath007.github.io/dronagiri/og.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Dronagiri package manager",
+      "alternateName": "Dronagiri",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Package manager",
+      "operatingSystem": "macOS 13 or later",
+      "softwareVersion": "1.0.0",
+      "description": "A free, open-source macOS package manager for the terminal. It lists Homebrew formulae and casks, npm global packages, pipx tools, Cargo crates, RubyGems and Go binaries in one place, with real disk size, install date, last-used evidence, dependencies and safe removal.",
+      "url": "https://mastershivnath007.github.io/dronagiri/",
+      "downloadUrl": "https://github.com/MasterShivnath007/dronagiri/releases/latest",
+      "codeRepository": "https://github.com/MasterShivnath007/dronagiri",
+      "license": "https://opensource.org/licenses/MIT",
+      "screenshot": "https://mastershivnath007.github.io/dronagiri/screenshot.png",
+      "author": {
+        "@type": "Person",
+        "name": "MasterShivnath007",
+        "url": "https://github.com/MasterShivnath007"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Dronagiri free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Dronagiri is free and open source under the MIT license. There is no account, no subscription, and no telemetry."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which package managers does Dronagiri support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Homebrew formulae and casks, npm global packages, pipx tools, Cargo crates, RubyGems and binaries installed with go install. Managers that are not installed are skipped rather than treated as errors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Dronagiri different from brew list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "brew list only shows Homebrew. Dronagiri combines six package managers into one list and adds real on-disk size, install dates, last-used evidence, dependency attribution, broken-entry detection, multi-select removal, updates and export."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Dronagiri work on Apple Silicon and Intel Macs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Release builds are provided for arm64 (Apple Silicon) and amd64 (Intel), and the app requires macOS 13 Ventura or later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Dronagiri need sudo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No for scanning or listing. Removing some casks can ask for your password because macOS owns those files, and Dronagiri always delegates removal to the package manager that installed the package."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Dronagiri collect data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Dronagiri has no telemetry. Popularity stars come from Homebrew's public install analytics, which are downloaded in the background and cached locally for 14 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Dronagiri uninstall npm, pipx, Cargo and RubyGems packages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Removal is always delegated to the manager that installed the package: brew uninstall, npm uninstall -g, pipx uninstall, cargo uninstall, gem uninstall, or deleting a go install binary after confirmation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I install Dronagiri with Homebrew?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not yet. Today you can install it with go install or download a release binary. A Homebrew tap is on the roadmap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is it called Dronagiri?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In the Ramayana, Hanuman cannot identify the Sanjeevani herb, so he lifts the entire Dronagiri mountain and carries it to the battlefield. Dronagiri does the same for your Mac: instead of hunting through six package managers, it lifts the whole inventory into one place."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./" aria-label="Dronagiri home">
+      <img src="mark.svg" alt="" width="28" height="28">
+      Dronagiri <span>package manager</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#compare">Comparison</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="https://github.com/MasterShivnath007/dronagiri" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><b>Free &amp; open source</b> · macOS 13+<span class="hide-sm"> · Apple Silicon &amp; Intel</span></div>
+    <h1>Every tool on your Mac,<br><span>lifted into one place.</span></h1>
+    <p class="lede">
+      Dronagiri is a terminal package manager for macOS. It finds everything you
+      installed with <code>brew</code>, <code>npm</code>, <code>pipx</code>,
+      <code>cargo</code>, <code>gem</code> and <code>go install</code>, then shows
+      the real size, install date, last-used evidence, dependencies and the one
+      command that removes it.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#install">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 2v8m0 0 3-3M8 10 5 7M3 13h10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Install in one command
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/MasterShivnath007/dronagiri/releases/latest" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 12.5 3.5 8l1.4-1.4L7 8.7V1h2v7.7l2.1-2.1L12.5 8 8 12.5ZM2 14v-2h12v2H2Z"/></svg>
+        Download v1.0.0
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/MasterShivnath007/dronagiri" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .5 9.9 6l5.6.2-4.5 3.4 1.7 5.4L8 11.7 3.3 15l1.7-5.4L.5 6.2 6.1 6 8 .5Z"/></svg>
+        Star on GitHub
+      </a>
+    </div>
+    <div class="cmd">
+      <span class="prompt" aria-hidden="true">$</span>
+      <code id="install-cmd">go install github.com/MasterShivnath007/dronagiri@latest</code>
+      <button class="copy" type="button" data-copy="go install github.com/MasterShivnath007/dronagiri@latest">Copy</button>
+    </div>
+    <p class="hero-note">No sudo. No telemetry. Reads your machine, writes only to ~/Library/Caches/dronagiri.</p>
+  </div>
+</section>
+
+<figure class="wrap shot">
+  <img src="screenshot.png" width="2400" height="1388" alt="Dronagiri package manager running in Terminal on macOS: a navy table of 201 packages with orange tabs, sizes, popularity stars, install dates and a detail panel for @callstack/ai-cli.">
+  <figcaption>Dronagiri 1.0.0 on macOS — Mine, 201 packages, 6.8 GB, 102 updates available.</figcaption>
+</figure>
+
+<div class="managers">
+  <div class="wrap managers-inner">
+    <span class="managers-label">Reads from</span>
+    <span class="chip">Homebrew</span>
+    <span class="chip">npm</span>
+    <span class="chip">pipx</span>
+    <span class="chip">Cargo</span>
+    <span class="chip">RubyGems</span>
+    <span class="chip">go install</span>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What it does</div>
+      <h2>One inventory. Real answers.</h2>
+      <p>Package managers each know a fragment of your Mac. Dronagiri joins the fragments and turns them into a list you can actually act on.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z" stroke-linejoin="round"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9" stroke-linejoin="round"/></svg></div>
+        <h3>Six managers, one list</h3>
+        <p>Homebrew formulae and casks, npm globals, pipx tools, Cargo crates, RubyGems and <code>go install</code> binaries, side by side.</p>
+      </article>
+      <article class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 19V9m5 10V5m5 14v-7m5 7V3" stroke-linecap="round"/></svg></div>
+        <h3>Real on-disk size</h3>
+        <p>One batched <code>du</code> over every install path, with a running total. Sort by size and see what is actually eating the disk.</p>
+      </article>
+      <article class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18M5 8h14M5 16h14" stroke-linecap="round"/></svg></div>
+        <h3>Yours vs. dependencies</h3>
+        <p><strong>Mine</strong> hides the libraries that arrived with something else. <strong>Dependencies</strong> shows each one and names the packages that need it.</p>
+      </article>
+      <article class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2" stroke-linecap="round"/></svg></div>
+        <h3>Honest last-used dates</h3>
+        <p>Spotlight metadata for apps and timestamped shell history for commands. When there is no evidence, it says <code>never</code> instead of guessing.</p>
+      </article>
+      <article class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.4 3 7.5 7.5 9 4.5-1.5 7.5-4.6 7.5-9V6L12 3Z" stroke-linejoin="round"/><path d="m8.8 12 2.2 2.2 4.2-4.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Removal with two brakes</h3>
+        <p>Select with <kbd>space</kbd>, press <kbd>d</kbd>, then confirm twice. Removal always uses the manager's own uninstall command — no <code>--force</code>.</p>
+      </article>
+      <article class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7" stroke-linecap="round"/><path d="m16 15 2 2 3-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Updates, broken entries, export</h3>
+        <p>Upgrade a row with <kbd>u</kbd>, find manager entries whose files are gone, and write the current view to <code>~/Downloads</code> with <kbd>e</kbd>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Why not just brew list?</div>
+      <h2>Brew knows Homebrew.<br>Dronagiri knows your Mac.</h2>
+      <p><code>brew list</code> is a good command, but it only sees one manager and one dimension: names. Dronagiri adds the context you need before you delete something.</p>
+    </div>
+    <div class="compare" role="region" aria-label="Comparison of brew list and Dronagiri" tabindex="0">
+      <table>
+        <thead>
+          <tr><th scope="col">Capability</th><th scope="col">brew list</th><th scope="col">Dronagiri</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>One list across six package managers</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Real on-disk size and running total</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Install date and last-used evidence</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Separates your tools from dependencies</td><td class="partial">Manual</td><td class="yes">Yes</td></tr>
+          <tr><td>Names the packages that need a library</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Finds manager entries whose files are gone</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Multi-select removal with two confirmations</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Per-package updates</td><td class="partial">Upgrade all</td><td class="yes">Yes</td></tr>
+          <tr><td>Export the current view as text</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Works over SSH, no GUI required</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="keys">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Built for the terminal</div>
+      <h2>Muscle memory in five minutes.</h2>
+      <p>Arrow keys or <kbd>j</kbd>/<kbd>k</kbd> to move, <kbd>tab</kbd> to change views, <kbd>h</kbd>/<kbd>H</kbd> to pick a column, <kbd>s</kbd> to sort. The footer always shows what is available.</p>
+    </div>
+    <div class="keys">
+      <div class="key"><kbd>↑</kbd><kbd>↓</kbd> move through the list</div>
+      <div class="key"><kbd>space</kbd> select or deselect</div>
+      <div class="key"><kbd>a</kbd> select everything in view</div>
+      <div class="key"><kbd>d</kbd> remove selected (twice)</div>
+      <div class="key"><kbd>u</kbd> upgrade selected or hovered</div>
+      <div class="key"><kbd>/</kbd> search name and description</div>
+      <div class="key"><kbd>tab</kbd> Mine / Dependencies / Updates / Broken / All</div>
+      <div class="key"><kbd>h</kbd><kbd>H</kbd> previous / next column</div>
+      <div class="key"><kbd>s</kbd> sort, press again to reverse</div>
+      <div class="key"><kbd>e</kbd> export the view to ~/Downloads</div>
+      <div class="key"><kbd>r</kbd> reload from the managers</div>
+      <div class="key"><kbd>?</kbd> help · <kbd>q</kbd> quit</div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">How it works</div>
+      <h2>No private APIs. No scraping.</h2>
+      <p>Every manager is read through its own documented interface. Dronagiri is an inspector, not a replacement — it never hides a package from the manager that owns it.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <h3>Read the real inventory</h3>
+        <p>Homebrew uses <code>brew info --json=v2 --installed</code>; npm uses <code>npm ls -g --json</code>; pipx, Cargo, RubyGems and Go have their own commands. Missing managers are skipped.</p>
+      </article>
+      <article class="step">
+        <h3>Measure and attribute</h3>
+        <p>A single batched <code>du</code> measures install paths. For Homebrew, <code>brew deps</code> supplies the real runtime linkage, then the graph is inverted so each library can name its dependents.</p>
+      </article>
+      <article class="step">
+        <h3>Act through the manager</h3>
+        <p>Removal and upgrades are delegated to <code>brew</code>, <code>npm</code>, <code>pipx</code>, <code>cargo</code>, <code>gem</code> or a confirmed binary delete. Dronagiri adds no <code>--force</code>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="safety">
+  <div class="wrap">
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.4 3 7.5 7.5 9 4.5-1.5 7.5-4.6 7.5-9V6L12 3Z" stroke-linejoin="round"/><path d="M12 8v4m0 3h.01" stroke-linecap="round"/></svg>
+      <div>
+        <h3>Deletion is deliberately inconvenient</h3>
+        <p>Nothing is removed until you press <kbd>d</kbd> and confirm twice in bordered dialogs. The first window lists every package and the space freed; the second is a last-chance warning. Dependencies are called out, macOS-owned packages are marked protected, and the final command is the manager's own. <code>d to remove</code> in the footer turns red whenever a selection is active.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Install</div>
+      <h2>On your Mac in under a minute.</h2>
+      <p>Dronagiri is a single binary. It installs nothing into your system and needs no account. Pick whichever route matches your setup.</p>
+    </div>
+    <div class="install-grid">
+      <article class="install-card">
+        <span class="tag">Fastest</span>
+        <h3>One command</h3>
+        <p>Requires Go 1.24 or newer. Go puts the binary in <code>~/go/bin</code>.</p>
+        <pre><code>go install github.com/MasterShivnath007/dronagiri@latest
+
+<span class="c"># if ~/go/bin is not on your PATH:</span>
+echo 'export PATH="$PATH:$(go env GOPATH)/bin"' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+
+dronagiri</code></pre>
+      </article>
+      <article class="install-card">
+        <span class="tag">No Go needed</span>
+        <h3>Download a binary</h3>
+        <p>Grab the archive for your Mac from the latest release: Apple Silicon is <code>arm64</code>, Intel is <code>amd64</code>.</p>
+        <pre><code>tar -xzf dronagiri_1.0.0_darwin_arm64.tar.gz
+sudo mv dronagiri /usr/local/bin/
+dronagiri
+
+<span class="c"># only if Gatekeeper blocks the first run:</span>
+xattr -d com.apple.quarantine /usr/local/bin/dronagiri</code></pre>
+        <p class="note">Downloaded binaries are not notarized by Apple, so macOS may ask for confirmation once.</p>
+      </article>
+      <article class="install-card">
+        <span class="tag">From source</span>
+        <h3>Build it yourself</h3>
+        <p>Useful if you want to read the code first or run a development build.</p>
+        <pre><code>git clone https://github.com/MasterShivnath007/dronagiri.git
+cd dronagiri
+make install
+
+<span class="c"># or, without make:</span>
+go build -o dronagiri .
+sudo mv dronagiri /usr/local/bin/</code></pre>
+      </article>
+    </div>
+    <div class="cmd" style="margin-left:0;margin-right:0;max-width:none;margin-top:18px">
+      <span class="prompt" aria-hidden="true">$</span>
+      <code>dronagiri --version &nbsp; <span style="color:#6e7e96"># dronagiri 1.0.0</span></code>
+      <a class="copy" href="https://github.com/MasterShivnath007/dronagiri/releases/latest" target="_blank" rel="noopener" style="text-decoration:none">All releases</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">FAQ</div>
+      <h2>Questions before you install.</h2>
+      <p>If your question is not here, open an issue on GitHub — it also helps the next person who searches for it.</p>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Is Dronagiri free?</summary>
+        <p>Yes. It is MIT-licensed open source, with no account, subscription or telemetry. You can read every line, build it yourself, or download a signed release binary.</p>
+      </details>
+      <details>
+        <summary>Which package managers does it support?</summary>
+        <p>Homebrew formulae and casks, npm global packages, pipx tools, Cargo crates, RubyGems and binaries installed with <code>go install</code>. Managers that are not installed are skipped rather than treated as errors, so a Mac with only Homebrew still works.</p>
+      </details>
+      <details>
+        <summary>How is it different from <code>brew list</code>?</summary>
+        <p><code>brew list</code> only sees Homebrew and only prints names. Dronagiri combines six managers into one table and adds real on-disk size, install dates, last-used evidence, dependency attribution, broken-entry detection, multi-select removal, per-package updates and export.</p>
+      </details>
+      <details>
+        <summary>Does it work on Apple Silicon and Intel Macs?</summary>
+        <p>Yes. Releases include separate <code>arm64</code> (Apple Silicon) and <code>amd64</code> (Intel) builds. The minimum is macOS 13 Ventura, and it runs over SSH without a GUI.</p>
+      </details>
+      <details>
+        <summary>Does Dronagiri need <code>sudo</code>?</summary>
+        <p>No for scanning or listing. Removing some casks can ask for your password because macOS owns those files. Dronagiri never deletes package files itself — it calls the manager that installed the package.</p>
+      </details>
+      <details>
+        <summary>Does it collect data?</summary>
+        <p>No. There is no telemetry. Popularity stars come from Homebrew's public install analytics; the datasets are downloaded in the background and cached locally for 14 days. Nothing about your installed packages is sent anywhere.</p>
+      </details>
+      <details>
+        <summary>How does it know when I last used a tool?</summary>
+        <p>It uses two honest signals: Spotlight's <code>kMDItemLastUsedDate</code> for <code>.app</code> bundles, and timestamped shell history for commands. When neither exists it shows <code>never</code> — meaning no trace in your history, not proof that the tool is unused. The detail panel spells this out.</p>
+      </details>
+      <details>
+        <summary>Can I install it with Homebrew?</summary>
+        <p>Not yet. Today the options are <code>go install</code>, a release binary, or building from source. A Homebrew tap is on the roadmap.</p>
+      </details>
+      <details>
+        <summary>Why is it called Dronagiri?</summary>
+        <p>In the Ramayana, Hanuman cannot tell which herb will save Lakshmana, so he lifts the entire Dronagiri mountain and carries it to the battlefield. That is the idea here: instead of hunting through six package managers, lift the whole inventory into one place and choose from it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="support">
+      <div class="support-grid">
+        <div>
+          <div class="kicker">Support the project</div>
+          <h2>Free forever. Paid help if you want it.</h2>
+          <p>Dronagiri is a one-person project. The code stays MIT and free. If it saved you an afternoon, a star, a share or a sponsorship keeps it maintained.</p>
+          <div class="support-actions">
+            <a class="btn btn-primary" href="https://github.com/sponsors/MasterShivnath007" target="_blank" rel="noopener">Sponsor on GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/MasterShivnath007/dronagiri" target="_blank" rel="noopener">Star the repo</a>
+          </div>
+          <p style="font-size:13px;color:var(--faint);margin-top:14px">Sponsorships fund maintenance, not a hosted service. There is no paywalled feature in the current release.</p>
+        </div>
+        <div class="support-box">
+          <h3>Mac developer environment audit</h3>
+          <div class="price">$49 <span style="font-size:13px;color:var(--faint);font-weight:400">one-off</span></div>
+          <p>A 60-minute remote session using Dronagiri to find dead weight, broken entries and safe removals on your Mac.</p>
+          <ul>
+            <li>Inventory review and size report</li>
+            <li>Prioritised, safe cleanup plan</li>
+            <li>Shell-history and Spotlight setup</li>
+            <li>Seven days of follow-up questions</li>
+          </ul>
+          <a class="btn btn-ghost" style="width:100%" href="https://github.com/MasterShivnath007/dronagiri/issues/new?title=Mac%20cleanup%20request&body=What%20would%20you%20like%20cleaned%20up%3F%0A%0AMac%20model%3A%0AmacOS%20version%3A%0AApprox.%20free%20space%3A" target="_blank" rel="noopener">Request an audit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>Dronagiri package manager · MIT · macOS only</div>
+    <div class="footer-links">
+      <a href="https://github.com/MasterShivnath007/dronagiri">GitHub</a>
+      <a href="https://github.com/MasterShivnath007/dronagiri/releases/latest">Releases</a>
+      <a href="https://github.com/MasterShivnath007/dronagiri/blob/main/README.md">Docs</a>
+      <a href="https://github.com/MasterShivnath007/dronagiri/issues">Issues</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:14px;color:#55647c;font-size:12px">Not affiliated with Apple, Homebrew, npm, pipx, Cargo or RubyGems. Package names and trademarks belong to their owners.</div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var text = button.getAttribute('data-copy');
+      var done = function () {
+        var old = button.textContent;
+        button.textContent = 'Copied';
+        button.classList.add('done');
+        window.setTimeout(function () {
+          button.textContent = old;
+          button.classList.remove('done');
+        }, 1600);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+      function fallback() {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(area);
+      }
+    });
+  });
+</script>
+</body>
+</html>

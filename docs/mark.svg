@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dronagiri mountain mark">
+  <rect width="64" height="64" rx="14" fill="#0B1220"/>
+  <circle cx="45" cy="18" r="5.5" fill="#FFB86B"/>
+  <path d="M10 49 L25.5 20 L35 35 L41.5 26 L54 49 Z" fill="#F97316"/>
+  <path d="M25.5 20 L30.4 29.5 L25.5 27.2 L21.4 30.4 Z" fill="#FFD7A8"/>
+</svg>

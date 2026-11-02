@@ -1,48 +1,50 @@
 <div align="center">
 
-<img src="docs/logo.svg" alt="Hanuman flying, carrying the Dronagiri mountain" width="860">
+<img src="docs/logo.svg" alt="Hanuman flying, carrying the Dronagiri mountain" width="760">
 
 # Dronagiri package manager
 
 **Every tool on your Mac, lifted into one place.**
 
-*A macOS-only terminal package manager — inspect, understand and remove anything installed from the command line.*
+A free, open-source **macOS package manager** for the terminal. One list for
+Homebrew formulae and casks, npm global packages, pipx tools, Cargo crates,
+RubyGems and `go install` binaries — with real disk size, install dates,
+last-used evidence, dependencies and safe removal.
 
-</div>
-
-One list of every tool you installed, what it does, how much space it takes,
-when it arrived, when you last used it, what depends on it — and a single key
-to remove it.
-
-The emblem fills the screen while your inventory loads, then folds away so the
-list has room to breathe.
-
+[![Website](https://img.shields.io/badge/website-live-f97316)](https://mastershivnath007.github.io/dronagiri/)
 [![CI](https://github.com/MasterShivnath007/dronagiri/actions/workflows/ci.yml/badge.svg)](https://github.com/MasterShivnath007/dronagiri/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/MasterShivnath007/dronagiri?color=orange)](https://github.com/MasterShivnath007/dronagiri/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Platform: macOS](https://img.shields.io/badge/platform-macOS-black.svg)]()
+[![Platform: macOS 13+](https://img.shields.io/badge/platform-macOS%2013%2B-black.svg)]()
 [![Go](https://img.shields.io/badge/go-1.24%2B-00ADD8.svg)]()
 
-```
-Dronagiri package manager  ·  Every tool on your Mac, lifted into one place        200 packages · 6.8 GB · 102 outdated
+[**Website**](https://mastershivnath007.github.io/dronagiri/) · [**Install**](#install) · [**Keys**](#keys) · [**FAQ**](#faq) · [**Support**](#support-the-project)
 
-  Mine 55   Dependencies 145   Updates 102   Broken 3   All 200    press tab to switch
-      PACKAGE ▲            VERSION        WHAT IT'S FOR             SIZE POPULAR    INSTALLED   LAST USED   SOURCE
-▸ [ ] @callstack/ai-cli    0.11.0         AI assistant in you…   82.9 MB —          02 Jul 25   never       npm
-  [x] ffmpeg               8.0.1_2 → 9.…  Play, record, convert…   51.3 MB ★★★★☆      31 Jan 26   never       brew
-  [ ] htop                 3.4.0 → 3.5.3  Improved top (interac…    408 KB ★★★☆☆      31 Mar 25   never       brew
-  [ ] iterm2               3.5.11 → 3.7.6 Terminal emulator as …     101 MB ★★★☆☆      31 Mar 25   01 Nov 26   cask
-  [ ] maccy                2.6.1          Clipboard manager      12.0 KB ★★★☆☆      01 Mar 26   never       cask
+<a href="https://github.com/MasterShivnath007/dronagiri/releases/latest">
+  <img src="docs/screenshot.png" alt="Dronagiri package manager running in Terminal on macOS: a navy table of 201 packages with orange tabs, sizes, popularity stars, install dates and a detail panel" width="100%">
+</a>
 
-╭──────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ ffmpeg  8.0.1_2  brew                                                                             │
-│ Play, record, convert, and stream audio and video                                                 │
-│ 51.3 MB  ·  installed 31 Jan 2026 · update available: 9.0.2                                       │
-│ last used · no trace in your shell history (scripts and editors are not tracked)                  │
-│ /opt/homebrew/Cellar/ffmpeg/8.0.1_2                                                               │
-╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
- ↑↓ move · space select · / search · tab views · h column · s sort · u upgrade · ? help · e export · q quit
-```
+<sub>Dronagiri 1.0.0 on macOS — 201 packages, 6.8 GB, 102 updates available. <a href="https://github.com/MasterShivnath007/dronagiri/releases/latest">Download</a> · <a href="https://mastershivnath007.github.io/dronagiri/">Website</a></sub>
+
+</div>
+
+## What is Dronagiri?
+
+Dronagiri is a **macOS package manager and uninstaller for developers**. It reads
+the package databases of Homebrew, npm, pipx, Cargo, RubyGems and `go install`,
+then puts everything you own into one sortable table: what it does, how much
+space it takes, when it arrived, when you last used it, what depends on it, and
+which command removes it.
+
+It is the idea behind Cydia and Sileo on a jailbroken iPhone — one list,
+searchable, with a Remove button — applied to the Mac terminal. If you have ever
+run `brew list`, seen 188 names, and had no idea which 145 were libraries you
+never asked for, this is the missing view.
+
+Dronagiri does not replace your package managers. It reads their documented
+interfaces, delegates every removal and upgrade to them, and never adds
+`--force`. Think of it as a **`brew list` alternative** that also understands the
+rest of your machine.
 
 ## The name
 
@@ -67,6 +69,21 @@ which is which, what anything does, or how much space it takes.
 
 On a jailbroken iPhone, Cydia and Sileo solved exactly this: one list, grouped,
 searchable, with a Remove button. `dronagiri` is that idea, for the Mac terminal.
+
+## Dronagiri vs. `brew list`
+
+| Capability | `brew list` | Dronagiri |
+|---|---|---|
+| One list across six package managers | No | **Yes** |
+| Real on-disk size and running total | No | **Yes** |
+| Install date and last-used evidence | No | **Yes** |
+| Separates your tools from dependencies | Manual | **Yes** |
+| Names the packages that need a library | No | **Yes** |
+| Finds manager entries whose files are gone | No | **Yes** |
+| Multi-select removal with two confirmations | No | **Yes** |
+| Per-package updates | Upgrade all | **Yes** |
+| Export the current view as text | No | **Yes** |
+| Works over SSH, no GUI required | Yes | **Yes** |
 
 ## What it does
 
@@ -308,11 +325,68 @@ anywhere.
 
 ## Roadmap
 
+- [x] GitHub Pages site and search-friendly documentation
+- [ ] Signed and notarized binaries, so Gatekeeper does not ask
 - [ ] `--dry-run` for scripted removals
 - [ ] Unused-dependency view built on `brew autoremove --dry-run`
 - [ ] Disk treemap panel
 - [ ] Homebrew tap for `brew install dronagiri`
 - [ ] Optional snapshot/restore in the spirit of `brew bundle`
+
+## FAQ
+
+### Is Dronagiri free?
+
+Yes. It is MIT-licensed open source, with no account, subscription or telemetry.
+You can read every line, build it yourself, or download a release binary.
+
+### Does it work on Apple Silicon and Intel Macs?
+
+Yes. Releases include separate `arm64` (Apple Silicon) and `amd64` (Intel)
+builds. The minimum is macOS 13 Ventura, and it runs over SSH without a GUI.
+
+### Does Dronagiri need `sudo`?
+
+No for scanning or listing. Removing some casks can ask for your password
+because macOS owns those files. Dronagiri never deletes package files itself —
+it calls the manager that installed the package.
+
+### Is it a Homebrew GUI?
+
+No. It is a terminal UI, closer to `htop` or `lazygit` than to Cakebrew. It also
+reads npm, pipx, Cargo, RubyGems and `go install`, which most Homebrew GUIs do
+not.
+
+### Does it collect data?
+
+No. There is no telemetry. Popularity stars come from Homebrew's public install
+analytics; the datasets are downloaded in the background and cached locally for
+14 days. Nothing about your installed packages is sent anywhere.
+
+### Can I install it with Homebrew?
+
+Not yet. Today the options are `go install`, a release binary, or building from
+source. A Homebrew tap is on the roadmap.
+
+### Why is it called Dronagiri?
+
+In the Ramayana, Hanuman cannot tell which herb will save Lakshmana, so he lifts
+the entire **Dronagiri** mountain and carries it to the battlefield. That is the
+idea here: instead of hunting through six package managers, lift the whole
+inventory into one place and choose from it.
+
+## Support the project
+
+Dronagiri is free and will stay MIT-licensed. If it saved you an afternoon:
+
+- **Star the repo** — it helps other Mac users find it.
+- **Share it** — a post, a tweet or a mention in your team chat.
+- **[Sponsor on GitHub](https://github.com/sponsors/MasterShivnath007)** — recurring support for maintenance.
+- **[Request a paid environment audit](https://github.com/MasterShivnath007/dronagiri/issues/new?title=Mac%20cleanup%20request&body=What%20would%20you%20like%20cleaned%20up%3F%0A%0AMac%20model%3A%0AmacOS%20version%3A%0AApprox.%20free%20space%3A)** — a 60-minute remote session using Dronagiri to find dead weight, broken entries and safe removals on your Mac. $49, including a prioritised cleanup report and seven days of follow-up questions.
+
+There is no paywalled feature in the current release, and there will not be one
+hidden inside the MIT code. Read the full [support policy](SUPPORT.md) for
+sponsorship tiers, paid audits and custom work.
 
 ## Contributing
 
