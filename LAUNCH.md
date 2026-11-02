@@ -3,6 +3,8 @@
 This file is for maintainers. It records what is already in place and what still
 needs a human account (Google, social, directories).
 
+Ready-to-post copy for the first backlinks is in [LAUNCH_KIT.md](LAUNCH_KIT.md).
+
 ## Already in place
 
 - README with keyword-relevant headings: "macOS package manager",
