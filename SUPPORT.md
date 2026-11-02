@@ -19,19 +19,18 @@ short write-up, or a link from your own site helps more than a one-off donation.
 Recurring sponsorship pays for the unglamorous work: macOS releases, dependency
 updates, notarization, bug reports and documentation.
 
-- **[Sponsor on GitHub](https://github.com/sponsors/MasterShivnath007)**
-
-Suggested tiers once the Sponsors profile is active:
+- **[Sponsor monthly on GitHub](https://github.com/sponsors/MasterShivnath007)** — $3, $10 or $50 a month, with one-time amounts of $5, $25 and $100.
+- **[Donate one-time via Razorpay](https://rzp.io/rzp/gkf8SP9)** — UPI, Indian cards and netbanking.
 
 | Tier | What it supports |
 |---|---|
-| **$5 / month — Supporter** | Maintenance, release builds and issue triage |
-| **$25 / month — Backer** | Priority issue triage and a vote on the roadmap |
-| **$100 / month — Company** | A logo/credit in the README and priority fixes |
+| **$3 / month — Supporter** | Maintenance, release builds and issue triage |
+| **$10 / month — Backer** | Priority issue triage and a vote on the roadmap |
+| **$50 / month — Company** | A credit in the README and priority fixes |
 
 Sponsorship is optional and does not change the license. If you need an invoice
-or a payment method other than GitHub Sponsors, open an issue and we will sort
-out the details.
+or a payment method other than GitHub Sponsors or Razorpay, open an issue and we
+will sort out the details.
 
 ## 3. Paid help and custom work
 
@@ -80,5 +79,6 @@ Open an issue on the repository with the service you want:
 
 <https://github.com/MasterShivnath007/dronagiri/issues/new>
 
-Payment is arranged after the scope is agreed. For India, UPI/Razorpay is
-available; for international work, PayPal or a GitHub Sponsors invoice works.
+Payment is arranged after the scope is agreed. For India, Razorpay supports UPI,
+cards and netbanking; for international work, GitHub Sponsors or an invoice
+works.

@@ -382,10 +382,11 @@ inventory into one place and choose from it.
 
 Dronagiri is free and will stay MIT-licensed. If it saved you an afternoon:
 
+- **[Sponsor monthly on GitHub](https://github.com/sponsors/MasterShivnath007)** — $3, $10 or $50 a month; recurring support for maintenance.
+- **[Donate via Razorpay](https://rzp.io/rzp/gkf8SP9)** — one-time support with UPI, Indian cards and netbanking.
 - **[Request a paid environment audit](https://github.com/MasterShivnath007/dronagiri/issues/new?title=Mac%20cleanup%20request&body=What%20would%20you%20like%20cleaned%20up%3F%0A%0AMac%20model%3A%0AmacOS%20version%3A%0AApprox.%20free%20space%3A)** — a 60-minute remote session using Dronagiri to find dead weight, broken entries and safe removals on your Mac. $49, including a prioritised cleanup report and seven days of follow-up questions.
 - **Star the repo** — it helps other Mac users find it.
 - **Share it** — a post, a tweet or a mention in your team chat.
-- **[Sponsor on GitHub](https://github.com/sponsors/MasterShivnath007)** — recurring support for maintenance, once the Sponsors profile is active.
 
 There is no paywalled feature in the current release, and there will not be one
 hidden inside the MIT code. Read the full [support policy](SUPPORT.md) for

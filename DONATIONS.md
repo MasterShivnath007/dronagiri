@@ -180,23 +180,37 @@ say so and I will remove the $49 card from `docs/index.html`, `README.md` and
 `SUPPORT.md`. If you want a different price or scope, tell me and I will change
 it everywhere.
 
-## What to send me
+## Live links
 
-Once the accounts are live, send:
+| Purpose | URL |
+|---|---|
+| GitHub Sponsors | <https://github.com/sponsors/MasterShivnath007> |
+| One-time support (Razorpay) | <https://rzp.io/rzp/gkf8SP9> |
+| Mac audit (Razorpay) | <https://rzp.io/rzp/PWulBM7> |
 
-1. GitHub Sponsors profile URL (after approval)
-2. Razorpay “Support Dronagiri” page URL
-3. Razorpay “Mac environment audit” page URL
-4. The audit price/currency you chose
-5. Whether you want a **Donate** link in the site navigation, the README, or both
+GitHub Sponsors is active with six tiers ($3, $10 and $50 monthly; $5, $25 and
+$100 one-time), and the repository Sponsor button is enabled.
 
-I will then:
+The Razorpay **Support Dronagiri** page accepts a customer-entered amount with a
+₹100 minimum. That is correct for a donation page.
 
-- Add both buttons to the website support section
-- Add Razorpay to the README support section
-- Add the Razorpay URL to `.github/FUNDING.yml` as a custom funding link
-- Keep the paid audit as the primary action and sponsorship as the recurring one
-- Verify every link returns the correct page
+The Razorpay **Mac environment audit** page is also currently customer-entered.
+Before sharing it as a $49 service, edit the page in Razorpay and set a **fixed
+amount of ₹4,199** (the rupee equivalent of $49). Until then, the website keeps
+the audit request on the GitHub issue form so nobody can underpay by mistake.
+Once the fixed amount is saved, send the updated link and the site button will
+point at it.
+
+The payment pages currently show a personal email and phone number. If you do
+not want those public, change the contact details in Razorpay to a project email
+before sharing the pages widely.
+
+## What is already wired
+
+- Website support section: GitHub Sponsors + Razorpay one-time + support policy
+- README support section: GitHub Sponsors + Razorpay + audit request
+- `.github/FUNDING.yml`: GitHub Sponsors + Razorpay one-time
+- `SUPPORT.md`: live tier prices and both payment links
 
 ## Do not
 

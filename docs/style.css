@@ -196,9 +196,9 @@ pre .c { color: var(--faint); }
 /* faq */
 .faq { border-top: 1px solid var(--line-soft); }
 details { border-bottom: 1px solid var(--line-soft); padding: 16px 0; }
-summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 18px; font-weight: 600; font-size: 16px; }
+summary { cursor: pointer; list-style: none; display: block; position: relative; padding-right: 30px; font-weight: 600; font-size: 16px; }
 summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; color: var(--orange); font-family: var(--mono); font-size: 20px; line-height: 1; }
+summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); color: var(--orange); font-family: var(--mono); font-size: 20px; line-height: 1; }
 details[open] summary::after { content: "−"; }
 details p { margin: 10px 0 0; color: var(--muted); font-size: 14.5px; max-width: 820px; }
 details code { color: var(--text); font-size: .9em; }
