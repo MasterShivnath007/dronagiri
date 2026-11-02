@@ -158,6 +158,8 @@ cross-post the same text to all of them.
 
 ### r/macapps
 
+Final copy: [content/reddit-r-macapps.md](content/reddit-r-macapps.md).
+
 **Title:** I built a free macOS package manager that puts brew, npm, pipx, Cargo, gems and Go in one list
 
 **Body:**
@@ -205,6 +207,8 @@ a plain title like "A TUI for seeing which brew packages are dependencies and
 how big they are", and answer questions rather than dropping a link.
 
 ## 5. X / Twitter thread
+
+Final copy: [content/x-thread.md](content/x-thread.md).
 
 **1/**
 
