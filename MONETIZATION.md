@@ -32,10 +32,10 @@ convenience, support and custom work instead.
       - $5/month — Supporter
       - $25/month — Backer (priority triage)
       - $100/month — Company (credit + priority fixes)
-- [ ] Create a Ko-fi page (or Razorpay payment page) for one-off international
-      cards. Add the link to `SUPPORT.md` and the site.
-- [ ] For Indian supporters, add a UPI ID or Razorpay link. Do not post a
-      personal bank account number.
+- [ ] Create a Ko-fi page for one-off international cards. Add the link to
+      `SUPPORT.md` and the site.
+- [ ] For Indian supporters, use GitHub Sponsors. Do not post a UPI ID or bank
+      account number. Razorpay is paused until its public page is sanitised.
 - [ ] Add a "Hire me" line to the GitHub profile and LinkedIn:
       "I build small, careful macOS developer tools. Dronagiri is one of them."
 - [ ] Set the GitHub profile location/website so people can find the project.
